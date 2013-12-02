@@ -38,7 +38,7 @@ class WebParser(object):
         faviconUrl = '%s://%s/favicon.ico' % (scheme, netloc)
         method = 'HEAD'
 
-        resp, content = httplib2.Http().request(faviconUrl, method)
+        resp, content = httplib2.Http(disable_ssl_certificate_validation=True).request(faviconUrl, method)
         if resp.status == 200:
             return faviconUrl
         else:
