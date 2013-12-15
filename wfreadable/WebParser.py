@@ -85,7 +85,10 @@ class WebParser(object):
         result['title'] = ''
         
         og = opengraph.OpenGraph()
-        og.parser(self.html)
+        try:
+            og.parser(self.html)
+        except:
+            pass
 
         # opengraph parsing
         if 'description' in og:
