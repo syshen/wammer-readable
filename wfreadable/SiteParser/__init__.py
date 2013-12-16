@@ -8,6 +8,7 @@ import ted
 import slashdot
 import bbc_news
 import wikipedia
+import medium
 
 Verbose=False
 
@@ -57,11 +58,17 @@ class Sites(object):
             'regex': '((http|https)://)?www\.bbc\.com/.*',
             'handler': bbc_news.BBCNews(verbose=Verbose)
         },
+
+        {
+            'regex': '((http|https)://)?medium\.com/.+',
+            'handler': medium.Medium(verbose=Verbose)
+        },
         
         {
             'regex': '.+',
             'handler': generic_web.GenericWeb(verbose=Verbose)
-        }
+        },
+
     ]
 
     def __init__(self, url):
